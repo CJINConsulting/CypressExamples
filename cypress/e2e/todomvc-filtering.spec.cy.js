@@ -24,7 +24,7 @@ describe('todo filtering', () => {
 
     it('should filter "All" todos', () => {
         cy.contains('All').click();
-        cy.get('.todo-list li').should('have.length', 2);
+        cy.get('.todo-list li').should('have.length', 3);
     });
 
 })
