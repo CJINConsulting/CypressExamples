@@ -1,15 +1,16 @@
 /// <reference types="cypress" />
 
+import { TodoPage } from "../page-objects/todo-page";
+
 describe('todo filtering', () => {
+    const todoPage = new TodoPage;
 
     beforeEach(() => {
-        cy.visit('https://todomvc-app-for-testing.surge.sh');
-        cy.get('.new-todo').type('clean your bedroom{enter}');
-        cy.get('.new-todo').type('use js{enter}');
-        cy.get('.new-todo').type('learn cypress{enter}');
-
-        cy.get('.todo-list li:nth-child(2) .toggle').click();
-
+        todoPage.navigate();
+        todoPage.addTodo('clean your bedroom');
+        todoPage.addTodo('use js');
+        todoPage.addTodo('learn cypress');
+        todoPage.clickTodoByIndex(2);
     });
 
     it('should filter "active" todos', () => {
